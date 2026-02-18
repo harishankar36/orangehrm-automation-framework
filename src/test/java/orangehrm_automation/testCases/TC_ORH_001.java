@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
 import orangehrm_automation.pageObjects.loginPage;
+import orangehrm_automation.pageObjects.profileHomepage;
 
 public class TC_ORH_001 {
 	
@@ -23,18 +24,15 @@ public class TC_ORH_001 {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 		driver.get("https://opensource-demo.orangehrmlive.com/");
-		String websiteName= driver.getTitle();
 		
-		Assert.assertEquals(websiteName, "OrangeHRM", "openSourceOrangeHRM");
-		
+		//login PAge
 		loginPage loginPage = new loginPage(driver);
-		
+		Assert.assertEquals(loginPage.getWebsiteName(), "OrangeHRM", "openSourceOrangeHRM");
 		loginPage.login("Admin", "admin123");
 		
-		String profileName= driver.findElement(By.xpath("//p[@class='oxd-userdropdown-name']")).getText();
-		
-		System.out.println(profileName);
-		Assert.assertEquals(profileName, "First Name Last Name", "Verifying Profile name");
+		//Profile PAge
+		profileHomepage profilePage = new profileHomepage(driver);
+		Assert.assertEquals(profilePage.getProfileNAme(), "Travel Allowance Accommodation", "Verifying Profile name");
 		 
 		driver.quit();
 		 

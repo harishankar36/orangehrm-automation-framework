@@ -18,6 +18,9 @@ public class loginPage {
 		
 	}
 	
+	
+	//WebElements
+	
 	@FindBy(xpath = "//input[@name='username']")
 	WebElement userName;
 	
@@ -27,14 +30,21 @@ public class loginPage {
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement signInButton;
 	
+	
+	
+	//ActionMethods
+	
+	public String getWebsiteName()
+	{
+		String websiteName= driver.getTitle();
+		return websiteName;
+	}
+	
 	public void login(String userID, String Password)
 	{
 		userName.sendKeys(userID);
 		password.sendKeys(Password);
 		signInButton.click();
-		 
-		
-	
 	}
 	
 	

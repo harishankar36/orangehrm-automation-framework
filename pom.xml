@@ -43,6 +43,11 @@
 </dependency>
 
 
+  	<dependency>
+  		<groupId>com.hari.opencart</groupId>
+  		<artifactId>opencart-automation</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
 
   <build>
