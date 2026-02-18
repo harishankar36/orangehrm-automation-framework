@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
+import orangehrm_automation.pageObjects.loginPage;
+
 public class TC_ORH_001 {
 	
 	
@@ -25,9 +27,9 @@ public class TC_ORH_001 {
 		
 		Assert.assertEquals(websiteName, "OrangeHRM", "openSourceOrangeHRM");
 		
-		driver.findElement(By.xpath("//input[@name='username']")).sendKeys("Admin");
-		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("admin123");
-		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		loginPage loginPage = new loginPage(driver);
+		
+		loginPage.login("Admin", "admin123");
 		
 		String profileName= driver.findElement(By.xpath("//p[@class='oxd-userdropdown-name']")).getText();
 		
