@@ -1,10 +1,29 @@
 package orangehrm_automation.pageObjects;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
 public class loginPage {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	
+	WebDriver driver;
+	
+	loginPage(WebDriver driver)
+	{
+		
+		this.driver= driver;
+		
+		PageFactory.initElements(driver, this);
+		
 	}
+	
+	@FindBy(xpath = "//input[@name='username']")
+	public  WebElement userName;
+	
+	@FindBy(xpath = "//input[@name='password']")
+	public  WebElement password;
+	
+	
 
 }
