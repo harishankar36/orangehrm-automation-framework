@@ -25,12 +25,12 @@ public class TC_ORH_001 {
 		
 		driver.get("https://opensource-demo.orangehrmlive.com/");
 		
-		//login PAge
+		//login Page
 		loginPage loginPage = new loginPage(driver);
 		Assert.assertEquals(loginPage.getWebsiteName(), "OrangeHRM", "openSourceOrangeHRM");
 		loginPage.login("Admin", "admin123");
 		
-		//Profile PAge
+		//Profile Page
 		profileHomepage profilePage = new profileHomepage(driver);
 		Assert.assertEquals(profilePage.getProfileNAme(), "Travel Allowance Accommodation", "Verifying Profile name");
 		 
