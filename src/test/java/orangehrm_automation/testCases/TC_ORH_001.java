@@ -35,7 +35,7 @@ public class TC_ORH_001 {
 		Assert.assertEquals(profilePage.getProfileNAme(), "Travel Allowance Accommodation", "Verifying Profile name");
 		 
 		driver.quit();
-		 
+		  
 
 	}
 
