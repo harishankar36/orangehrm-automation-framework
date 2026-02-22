@@ -34,7 +34,7 @@ public class TC_ORH_001 {
 		profileHomepage profilePage = new profileHomepage(driver);
 		Assert.assertEquals(profilePage.getProfileNAme(), "Travel Allowance Accommodation", "Verifying Profile name");
 		 
-		driver.quit();
+		driver.quit(); 
 		  
 
 	}
