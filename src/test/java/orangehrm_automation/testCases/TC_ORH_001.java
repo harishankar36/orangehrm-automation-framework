@@ -1,7 +1,5 @@
 package orangehrm_automation.testCases;
 
-import static org.testng.Assert.assertEquals;
-
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -9,10 +7,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
+import orangehrm_automation.base_Package.base_Test;
 import orangehrm_automation.pageObjects.loginPage;
 import orangehrm_automation.pageObjects.profileHomepage;
 
-public class TC_ORH_001 {
+public class TC_ORH_001 extends base_Test {
 	
 	
 	public static void main(String[] args) 
@@ -22,7 +21,6 @@ public class TC_ORH_001 {
 		WebDriver driver = new ChromeDriver();
 		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		
 		driver.get("https://opensource-demo.orangehrmlive.com/");
 		
 		//login Page
