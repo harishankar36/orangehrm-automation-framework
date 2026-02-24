@@ -14,14 +14,12 @@ import orangehrm_automation.pageObjects.profileHomepage;
 public class TC_ORH_001 extends base_Test {
 	
 	
-	public static void main(String[] args) 
+	public  void main(String[] args) 
 	
 	{
 	
-		WebDriver driver = new ChromeDriver();
 		
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		driver.get("https://opensource-demo.orangehrmlive.com/");
+		
 		
 		//login Page
 		loginPage loginPage = new loginPage(driver);
