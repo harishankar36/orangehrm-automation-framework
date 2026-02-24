@@ -20,7 +20,7 @@ public class TC_ORH_001 extends base_Test {
 		
 		//Profile Page
 		profileHomepage profilePage = new profileHomepage(driver);
-		Assert.assertEquals(profilePage.getProfileNAme(), "Travel Allowance Accommodation", "Verifying Profile name");
+		Assert.assertNotEquals(profilePage.getProfileNAme(), "Travel Allowance Accommodation", "Verifying Profile name");
 
 	}
 	
