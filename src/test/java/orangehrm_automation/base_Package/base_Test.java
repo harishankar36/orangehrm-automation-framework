@@ -26,7 +26,7 @@ public class base_Test {
 		
 		
 		// loading browser name from property file
-		FileInputStream fis = new FileInputStream("C:\\Users\\hari4\\Projects\\Selenium\\orangehrm-automation\\src\\main\\java\\orangehrm_automation\\resources\\globalData.properties");
+		FileInputStream fis = new FileInputStream("src/main/java/orangehrm_automation/resources/globalData.properties");
 		Properties p = new Properties();
 		p.load(fis);
 		
