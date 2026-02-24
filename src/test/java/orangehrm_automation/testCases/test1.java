@@ -13,6 +13,7 @@ public class test1 extends base_Test {
 	{
 		base_Test b = new base_Test();
 		b.initialize_Driver();
+		b.tearDown();
 	}
 
 }

@@ -9,13 +9,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class base_Test {
 
 	WebDriver driver = null;
 	@BeforeMethod
-	public WebDriver initialize_Driver() throws IOException
+	public void initialize_Driver() throws IOException
 	{
 		// loading browser name from property file
 		FileInputStream fis = new FileInputStream("C:\\Users\\hari4\\Projects\\Selenium\\orangehrm-automation\\src\\main\\java\\orangehrm_automation\\resources\\globalData.properties");
@@ -40,10 +41,9 @@ public class base_Test {
 		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.get(p.getProperty("url"));
-		
-		return driver;
 	}
 	
+	@AfterMethod
 	public void tearDown()
 	{
 		
