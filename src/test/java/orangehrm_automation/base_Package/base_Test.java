@@ -18,10 +18,10 @@ public class base_Test {
 
 	
 	loginPage loginPage;
-	WebDriver driver = null;
+	public WebDriver driver = null;
 	
 	@BeforeMethod
-	public WebDriver initialize_Driver() throws IOException
+	public void initialize_Driver() throws IOException
 	{
 		
 		
@@ -48,18 +48,16 @@ public class base_Test {
 		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.get(p.getProperty("url"));
-		return driver;
 	}
 	
-
-	
-	@AfterMethod
+	@AfterMethod()
 	public void tearDown()
 	{
-		
 		driver.quit();
 	}
-	
+
+
+
 	
 	
 }
