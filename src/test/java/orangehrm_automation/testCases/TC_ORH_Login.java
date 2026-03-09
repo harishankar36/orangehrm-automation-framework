@@ -30,7 +30,7 @@ public class TC_ORH_Login extends base_Test {
 		//login Page
 		loginPage loginPage = new loginPage(driver);
 		
-		//validatin main page
+		//validating main page
 		Assert.assertEquals(loginPage.getWebsiteName(), "OrangeHRM", "openSourceOrangeHRM");
 		
 		// incorrect credentials
