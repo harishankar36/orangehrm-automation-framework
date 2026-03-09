@@ -30,6 +30,8 @@ public class loginPage {
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement signInButton;
 	
+	@FindBy(xpath="//p[@class='oxd-text oxd-text--p oxd-alert-content-text']")
+	WebElement invalidCredentials;
 	
 	
 	//ActionMethods
@@ -46,6 +48,15 @@ public class loginPage {
 		password.sendKeys(Password);
 		signInButton.click();
 	}
+	
+	public String getInvalidAccess()
+	{
+		String errorMessage = invalidCredentials.getText();
+		
+		return errorMessage;
+	}
+	
+	
 	
 	
 
