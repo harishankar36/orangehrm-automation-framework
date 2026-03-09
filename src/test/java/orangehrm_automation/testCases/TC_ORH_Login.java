@@ -27,16 +27,18 @@ public class TC_ORH_Login extends base_Test {
 	public  void TC_002() 
 	
 	{
-		
 		//login Page
 		loginPage loginPage = new loginPage(driver);
+		
+		//validatin main page
 		Assert.assertEquals(loginPage.getWebsiteName(), "OrangeHRM", "openSourceOrangeHRM");
+		
+		// incorrect credentials
 		loginPage.login("Admin", "wrongPass123");
 		
+		//validating error message
 		String errorMessage= loginPage.getInvalidAccess();
-		
 		Assert.assertEquals(errorMessage, "Invalid credentials", "validating error meessage");
-		
 		
 		
 	}
