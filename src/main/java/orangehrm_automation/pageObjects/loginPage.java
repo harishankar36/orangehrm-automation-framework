@@ -33,13 +33,23 @@ public class loginPage {
 	@FindBy(xpath="//p[@class='oxd-text oxd-text--p oxd-alert-content-text']")
 	WebElement invalidCredentials;
 	
+	@FindBy(xpath = "(//span[@class='oxd-text oxd-text--span oxd-input-field-error-message oxd-input-group__message'])[1]")
+	WebElement usernameRequiredErrorMSG;
+	
+	@FindBy(xpath = "(//span[@class='oxd-text oxd-text--span oxd-input-field-error-message oxd-input-group__message'])[2]")
+	WebElement passwordRequiredErrorMSG;
+	
+	@FindBy(xpath = "//h5[contains(@class,'orangehrm-login-title')]")
+	WebElement login;
+	
+	
 	
 	//ActionMethods
 	
-	public String getWebsiteName()
+	public String loginPageText()
 	{
-		String websiteName= driver.getTitle();
-		return websiteName;
+		String loginText = login.getText();
+		return loginText;
 	}
 	
 	public void login(String userID, String Password)
@@ -55,6 +65,27 @@ public class loginPage {
 		
 		return errorMessage;
 	}
+	
+	public void click_Submit()
+	{
+		signInButton.click();
+		
+	}
+	
+	public String usernameRequiredMSG()
+	{
+	String userNameRequired = usernameRequiredErrorMSG.getText();
+	return userNameRequired;
+	}
+	
+	public String passwordRequiredMSG()
+	{
+	String passwordRequired = passwordRequiredErrorMSG.getText();
+	return passwordRequired;
+	}
+	
+	
+	
 	
 	
 	

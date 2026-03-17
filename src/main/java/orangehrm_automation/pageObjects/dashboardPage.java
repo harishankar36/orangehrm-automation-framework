@@ -6,11 +6,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class profileHomepage {
+public class dashboardPage {
 	
 	WebDriver driver;
 	
-	public profileHomepage(WebDriver driver) {
+	public dashboardPage(WebDriver driver) {
 		
 		this.driver=driver;
 		
@@ -22,12 +22,41 @@ public class profileHomepage {
 	@FindBy(xpath = "//p[@class='oxd-userdropdown-name']")
 	WebElement profileName;
 	
+	@FindBy(xpath = "//h6[contains(@class,'oxd-topbar-header-breadcrumb-module')]")
+	WebElement dashboard;
+	
+	@FindBy(xpath = "//i[contains(@class, 'bi-caret-down-fill')]")
+	WebElement profileDropdown;
+	
+	
+	@FindBy(xpath = "//ul[@class='oxd-dropdown-menu']//li[4]")
+	WebElement logout;
+	
+	
+	//Action methods
 	
 	public String getProfileNAme()
 	{
+		//this method gets the profile name
 		String pName= profileName.getText();
 		return pName;
 		
 	}
+	
+	public String getDashboardDisplayTXT()
+	{
+		String dashboardtxt= dashboard.getText();
+		return dashboardtxt;	
+	}
+	
+	public void logout()
+	{
+		
+		profileDropdown.click();
+		logout.click();
+		
+		
+	}
+	
 
 }
