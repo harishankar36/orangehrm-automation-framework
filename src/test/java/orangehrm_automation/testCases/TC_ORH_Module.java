@@ -101,11 +101,11 @@ public class TC_ORH_Module extends BaseTest {
 		pom.getLoginPage().login("Admin", "admin123");
 		
 		//validating whether system is in Dashboard Page
-		DashboardPage dashboardPage = new DashboardPage(driver);
-		String dashboardtxt = dashboardPage.getDashboardDisplayTXT();
+
+		String dashboardtxt = pom.getDashboardPage().getDashboardDisplayTXT();
 		Assert.assertEquals(dashboardtxt, "Dashboard", "validating whether system is inside dashboard");
 		
-		dashboardPage.logout();
+		pom.getDashboardPage().logout();
 
 		//validating whether system logged out successfully
 		Assert.assertEquals(pom.getLoginPage().loginPageText(), "Login", "openSourceOrangeHRM login page Icon");
