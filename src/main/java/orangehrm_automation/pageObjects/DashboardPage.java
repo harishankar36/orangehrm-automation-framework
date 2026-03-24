@@ -6,11 +6,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class dashboardPage {
+public class DashboardPage {
 	
 	WebDriver driver;
 	
-	public dashboardPage(WebDriver driver) {
+	public DashboardPage(WebDriver driver) {
 		
 		this.driver=driver;
 		
@@ -31,6 +31,11 @@ public class dashboardPage {
 	
 	@FindBy(xpath = "//ul[@class='oxd-dropdown-menu']//li[4]")
 	WebElement logout;
+	
+
+	@FindBy(xpath = "//li[@class='oxd-main-menu-item-wrapper'][1]")
+	WebElement adminButton;
+	
 	
 	
 	//Action methods
@@ -54,9 +59,14 @@ public class dashboardPage {
 		
 		profileDropdown.click();
 		logout.click();
-		
-		
 	}
+	
+	public void clickAdminButton()
+	{
+		adminButton.click();
+	}
+	
+	
 	
 
 }

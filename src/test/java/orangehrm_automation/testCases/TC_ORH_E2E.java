@@ -2,17 +2,17 @@ package orangehrm_automation.testCases;
 
 import org.testng.annotations.Test;
 
-import orangehrm_automation.base_Package.base_Test;
-import orangehrm_automation.pageObjects.loginPage;
+import orangehrm_automation.Base.BaseTest;
+import orangehrm_automation.pageObjects.LoginPage;
 
 
-public class TC_ORH_E2E extends base_Test{
+public class TC_ORH_E2E extends BaseTest{
 	
 	
 	@Test
 	public void TC_ORH_004()
 	{
-		loginPage loginPage = new loginPage(driver);
+		LoginPage loginPage = new LoginPage(driver);
 		
 		loginPage.login("Admin", "admin123");
 		

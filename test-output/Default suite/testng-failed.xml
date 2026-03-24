@@ -5,9 +5,10 @@
     <classes>
       <class name="orangehrm_automation.testCases.TC_ORH_Module">
         <methods>
-          <include name="tearDown"/>
+          <include name="setupPages"/>
           <include name="initialize_Driver"/>
-          <include name="TC_001"/>
+          <include name="TC_ORH_001"/>
+          <include name="tearDown"/>
         </methods>
       </class> <!-- orangehrm_automation.testCases.TC_ORH_Module -->
     </classes>

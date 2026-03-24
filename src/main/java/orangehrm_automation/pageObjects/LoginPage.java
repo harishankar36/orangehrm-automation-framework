@@ -5,17 +5,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class loginPage {
+import orangehrm_automation.Base.BasePage;
+
+public class LoginPage extends BasePage {
 	
 	WebDriver driver;
 	
-	public loginPage(WebDriver driver)
+	public LoginPage(WebDriver driver)
 	{
-		
+		super(driver); 
 		this.driver= driver;
-		
 		PageFactory.initElements(driver, this);
-		
 	}
 	
 	
@@ -49,7 +49,9 @@ public class loginPage {
 	public String loginPageText()
 	{
 		String loginText = login.getText();
+		
 		return loginText;
+		
 	}
 	
 	public void login(String userID, String Password)

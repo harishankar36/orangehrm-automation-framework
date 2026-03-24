@@ -1,4 +1,4 @@
-package orangehrm_automation.base_Package;
+package orangehrm_automation.Base;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,12 +12,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-import orangehrm_automation.pageObjects.loginPage;
+import orangehrm_automation.pageObjects.LoginPage;
 
-public class base_Test {
+public class BaseTest {
 
 	
-	loginPage loginPage;
+	LoginPage loginPage;
 	public WebDriver driver = null;
 	
 	@BeforeMethod

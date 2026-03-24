@@ -3,55 +3,52 @@ package orangehrm_automation.testCases;
 import static org.testng.Assert.assertEquals;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import orangehrm_automation.base_Package.base_Test;
-import orangehrm_automation.pageObjects.dashboardPage;
-import orangehrm_automation.pageObjects.loginPage;
-import orangehrm_automation.reusables.reusables;
+import orangehrm_automation.Base.BaseTest;
+import orangehrm_automation.pageObjects.AdminPage;
+import orangehrm_automation.pageObjects.DashboardPage;
+import orangehrm_automation.pageObjects.LoginPage;
+import orangehrm_automation.pageObjects.PageObjectManager;
 
 
 
-public class TC_ORH_Module extends base_Test {
+public class TC_ORH_Module extends BaseTest {
 	
+	PageObjectManager pom;
 	
+	@BeforeMethod
+	public void setupPages() {
+	    pom = new PageObjectManager(driver);
+	}
 
 	
 	@Test
-	public  void TC_001() 
+	public  void TC_ORH_001() 
 	
 	{
 		
-		//Valid login with Admin credentials
-		
-		//login Page
-		loginPage loginPage = new loginPage(driver);
-		
-		String pageName= loginPage.loginPageText();
+		String pageName= pom.getLoginPage().loginPageText();
 		Assert.assertEquals(pageName, "Login", "openSourceOrangeHRM login page Icon");
-		
-		loginPage.login("Admin", "admin123");
-		
-		//dashboardPage
-		dashboardPage profilePage = new dashboardPage(driver);
-		Assert.assertEquals(profilePage.getProfileNAme(), "Travel Allowance Accommodation", "Verifying Profile name");
+		pom.getLoginPage().login("Admin", "admin123");
+		Assert.assertEquals(pom.getDashboardPage().getProfileNAme(), "Travel Allowance Accommodation", "Verifying Profile name");
 	}
 	
 	@Test
-	public  void TC_002() 
+	public  void TC_ORH_002() 
 	
 	{
-		//login Page
-		loginPage loginPage = new loginPage(driver);
 		
-		String pageName= loginPage.loginPageText();
+		
+		String pageName= pom.getLoginPage().loginPageText();
 		Assert.assertEquals(pageName, "Login", "openSourceOrangeHRM login page Icon");
 
 		// incorrect credentials
-		loginPage.login("Admin", "wrongPass123");
+		pom.getLoginPage().login("Admin", "wrongPass123");
 		
 		//validating error message
-		String errorMessage= loginPage.getInvalidAccess();
+		String errorMessage= pom.getLoginPage().getInvalidAccess();
 		Assert.assertEquals(errorMessage, "Invalid credentials", "validating error meessage");
 	}
 	
@@ -61,12 +58,11 @@ public class TC_ORH_Module extends base_Test {
 	{
 		//Login with Blank Username and Password
 		
-		loginPage loginPage = new loginPage(driver);
 		
-		loginPage.click_Submit();
+		pom.getLoginPage().click_Submit();
 		
-		String usernameError = loginPage.usernameRequiredMSG();
-		String passwordError = loginPage.passwordRequiredMSG();
+		String usernameError = pom.getLoginPage().usernameRequiredMSG();
+		String passwordError = pom.getLoginPage().passwordRequiredMSG();
 		
 		Assert.assertEquals(usernameError, "Required", "validating password required notice");
 		Assert.assertEquals(passwordError, "Required", "validating password required notice");
@@ -76,50 +72,68 @@ public class TC_ORH_Module extends base_Test {
 	@Test()
 	public void TC_ORH_004()
 	{
-		//login page
-		loginPage loginPage = new loginPage(driver);
 		
-		Assert.assertEquals(loginPage.loginPageText(), "Login", "openSourceOrangeHRM login page Icon");
-		loginPage.login("Admin", "admin123");
+		
+		Assert.assertEquals(pom.getLoginPage().loginPageText(), "Login", "openSourceOrangeHRM login page Icon");
+		pom.getLoginPage().login("Admin", "admin123");
 		
 		//validating whether system is in Dashboard Page
-		dashboardPage dashboardPage = new dashboardPage(driver);
-		String dashboardtxt = dashboardPage.getDashboardDisplayTXT();
+		
+		String dashboardtxt = pom.getDashboardPage().getDashboardDisplayTXT();
 		Assert.assertEquals(dashboardtxt, "Dashboard", "validating whether system is inside dashboard");
 		
-		dashboardPage.logout();
+		pom.getDashboardPage().logout();
 
 		//validating whether system logged out successfully
+		String pageName= pom.getLoginPage().loginPageText();
+		Assert.assertEquals(pageName, "Login", "openSourceOrangeHRM login page Icon");
 		
 		
 	
 	}
 	 
 	@Test()
-	public void TC_ORH_005() 
+	public void TC_ORH_005() throws InterruptedException 
 	{
-		//login page
-		loginPage loginPage = new loginPage(driver);
-		
-		Assert.assertEquals(loginPage.loginPageText(), "Login", "openSourceOrangeHRM login page Icon");
-		loginPage.login("Admin", "admin123");
+	
+		//validating whether user is in the login page
+		Assert.assertEquals(pom.getLoginPage().loginPageText(), "Login", "openSourceOrangeHRM login page Icon");
+		pom.getLoginPage().login("Admin", "admin123");
 		
 		//validating whether system is in Dashboard Page
-		dashboardPage dashboardPage = new dashboardPage(driver);
+		DashboardPage dashboardPage = new DashboardPage(driver);
 		String dashboardtxt = dashboardPage.getDashboardDisplayTXT();
 		Assert.assertEquals(dashboardtxt, "Dashboard", "validating whether system is inside dashboard");
 		
 		dashboardPage.logout();
 
 		//validating whether system logged out successfully
-		Assert.assertEquals(loginPage.loginPageText(), "Login", "openSourceOrangeHRM login page Icon");
+		Assert.assertEquals(pom.getLoginPage().loginPageText(), "Login", "openSourceOrangeHRM login page Icon");
 		
 		//validating whether goes back in the browser to the Dashboard page
-		reusables browser = new reusables(driver);
-		browser.NavigateBack();
+		Thread.sleep(5000);
+		pom.getLoginPage().navigateBack();
 		
+		Thread.sleep(5000);
 		//validating whether system remains in the login page
-		Assert.assertEquals(loginPage.loginPageText(), "Login", "openSourceOrangeHRM login page Icon");
+		Assert.assertEquals(pom.getLoginPage().loginPageText(), "Login", "openSourceOrangeHRM login page Icon");
 			
+	}
+	
+	
+	@Test()
+	public void TC_ORH_006()
+	{
+		
+		pom.getLoginPage().login("Admin", "admin123");
+		String dashboardtxt = pom.getDashboardPage().getDashboardDisplayTXT();
+		Assert.assertEquals(dashboardtxt, "Dashboard", "validating whether system is inside dashboard");
+		pom.getDashboardPage().clickAdminButton();
+		Boolean checkURLPart = pom.getAdminPage().validateUrl("viewSystemUsers");
+		Boolean checkIfAdminBtnHighlighted = pom.getAdminPage().validateHighlightedAdminButton();	
+		Assert.assertTrue(checkURLPart);
+		Assert.assertTrue(checkIfAdminBtnHighlighted);
+
+		
 	}
 }
