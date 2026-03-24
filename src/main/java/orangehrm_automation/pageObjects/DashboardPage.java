@@ -5,12 +5,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import orangehrm_automation.Base.BasePage;
 
-public class DashboardPage {
+
+public class DashboardPage extends BasePage {
 	
 	WebDriver driver;
 	
 	public DashboardPage(WebDriver driver) {
+		
+		super(driver);
 		
 		this.driver=driver;
 		

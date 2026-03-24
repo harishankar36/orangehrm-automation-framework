@@ -5,12 +5,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AdminPage {
+import orangehrm_automation.Base.BasePage;
+
+public class AdminPage extends BasePage {
 	
 WebDriver driver;
 	
 	public AdminPage(WebDriver driver) {
-		
+		super(driver);
 		this.driver=driver;
 		
 		PageFactory.initElements(driver, this);
