@@ -3,9 +3,9 @@
 <suite name="Suite">
     <test name="SingleMethodOnly">
         <classes>
-            <class name="orangehrm_automation.testCases.TC_ORH_Module">
+            <class name="orangehrm_automation.testCases.TC_ORH_E2E">
                 <methods>
-                    <include name="TC_ORH_005"/>
+                    <include name="TC_ORH_chk"/>
                 </methods>
             </class>
         </classes>
