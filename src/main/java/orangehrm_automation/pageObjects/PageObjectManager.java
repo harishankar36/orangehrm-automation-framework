@@ -7,8 +7,8 @@ public class PageObjectManager {
 
     private WebDriver driver;
     private LoginPage loginPage;
-    private DashboardPage DashboardPage;
-    private AdminPage AdminPage;
+    private DashboardPage dashboardPage;
+    private AdminPage adminPage;
     
     public PageObjectManager(WebDriver driver)
 	{
@@ -27,18 +27,18 @@ public class PageObjectManager {
     
     public DashboardPage getDashboardPage() 
     {
-        if (DashboardPage == null) {
-        	DashboardPage = new DashboardPage(driver);
+        if (dashboardPage == null) {
+        	dashboardPage = new DashboardPage(driver);
         }
-        return DashboardPage;
+        return dashboardPage;
     }
     
     public AdminPage getAdminPage() 
     {
-        if (AdminPage == null) {
-        	AdminPage = new AdminPage(driver);
+        if (adminPage == null) {
+        	adminPage = new AdminPage(driver);
         }
-        return AdminPage;
+        return adminPage;
     }
     
     
